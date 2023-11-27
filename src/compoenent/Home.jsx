@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCats, getCatID } from "../redux/catSlice";
+import { fetchCats, getCatID, setSingleCatDetail } from "../redux/catSlice";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -14,7 +14,11 @@ const Home = () => {
 
   const cardClickHandler = (cat) => {
     dispatch(getCatID(cat.id));
-    navigate(`/cat/${cat.id}`);
+    navigate(`/breed/${cat.id}`);
+  };
+  const clickHandler = (cat) => {
+    dispatch(setSingleCatDetail(cat));
+    navigate(`/cat/${cat.name}`);
   };
   return (
     <>
@@ -24,12 +28,8 @@ const Home = () => {
           <p>Loading.....It takes some time to render</p>
         ) : (
           catsList?.map((cat) => (
-            <div
-              key={cat.id}
-              className="card"
-              onClick={() => cardClickHandler(cat)}
-            >
-              <div>
+            <div key={cat.id} className="card">
+              <div onClick={() => clickHandler(cat)}>
                 <img src={cat?.image?.url} alt="cat photo" />
               </div>
               <div>
@@ -37,8 +37,11 @@ const Home = () => {
                   <span> Name: {cat.name} ,</span>
                   <span>Origin: {cat.origin} ,</span>
                   <span>Temparement: {cat.temperament}</span>
-
-                  <a href={cat.wikipedia_url}>Wikipedia_url</a>
+                  <span onClick={() => cardClickHandler(cat)} className="link">
+                    {" "}
+                    Breed: {cat.id}
+                  </span>
+                  {/* <a href={cat.wikipedia_url}>Wikipedia_url</a> */}
                 </div>
                 <p className="paragraph">{cat.description}</p>
               </div>

@@ -1,8 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./compoenent/Home";
 import Cat from "./compoenent/Cat";
+import SingleCatDetails from "./compoenent/SingleCatDetails";
 
 function App() {
   return (
@@ -10,7 +10,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cat/:id" element={<Cat />} />
+          <Route path="/breed/:id" element={<Cat />} />
+          <Route path="/cat/:name" element={<SingleCatDetails />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -7,6 +7,7 @@ const catSlice = createSlice({
     loading: false,
     catListByBreed: [],
     selectedID: null,
+    catDetail: {},
   },
   reducers: {
     fetchCats: (state) => {
@@ -22,8 +23,17 @@ const catSlice = createSlice({
     setCatDetails: (state, action) => {
       state.catListByBreed = action.payload;
     },
+    setSingleCatDetail: (state, action) => {
+      state.catDetail = action.payload;
+    },
   },
 });
 
 export default catSlice.reducer;
-export const { fetchCats, getCats, getCatID, setCatDetails } = catSlice.actions;
+export const {
+  fetchCats,
+  getCats,
+  getCatID,
+  setCatDetails,
+  setSingleCatDetail,
+} = catSlice.actions;

@@ -1,4 +1,9 @@
-import { fetchCats, getCats, setCatDetails } from "./catSlice";
+import {
+  fetchCats,
+  getCats,
+  setCatDetails,
+  setSingleCatDetail,
+} from "./catSlice";
 import { call, put, take, takeEvery, takeLatest } from "redux-saga/effects";
 const route = `https://api.thecatapi.com/v1/images/search?limit=30&api_key=${process.env.REACT_APP_API_KEY}`;
 
@@ -21,7 +26,6 @@ function* SingleCatDetails({ payload }) {
     );
 
     const catDetail = yield catDetailResponse.json();
-    console.log(catDetail, "data");
     yield put(setCatDetails(catDetail));
   } catch (error) {
     // Handle any errors here

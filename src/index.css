@@ -45,6 +45,10 @@ code {
   width: 100%;
   text-align: left;
 }
+.link{
+  color:blue;
+  text-decoration: underline;
+}
 .paragraph{
   width: 95%;
   text-align: left;
@@ -54,4 +58,20 @@ code {
   -webkit-line-clamp: 3;
   font-size: 12px;
   -webkit-box-orient: vertical;
+}
+.singlecat{
+  display: flex;
+  flex-direction: column;
+ 
+  
+}
+.singlecat>img{
+  height: 400px;
+  width: 400px;
+  object-fit: contain;
+}
+.singlecat>div{
+ display: flex;
+ flex-direction: column;
+ gap:20px;
 }
